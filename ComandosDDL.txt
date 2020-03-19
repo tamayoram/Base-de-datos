@@ -1,0 +1,69 @@
+Task for DB
+USE master
+
+CREATE DATABASE pruewil1
+
+USE pruewil1
+
+ALTER DATABASE pruewil1
+modify Name = pruewilUno
+
+DROP DATABASE pruewil
+
+USE master
+
+
+--------------------------------------------
+--------------------------------------------
+Task for Tables
+/* */
+USE Bd_InstitucionEducativa;
+
+CREATE TABLE seres(
+	Idper int PRIMARY KEY,
+	nomPersona varchar(20),
+	apellidoPersona varchar(20)	
+ );
+
+/*Otra forma*/
+CREATE TABLE [dbo].[tblempleado](
+	[Idempleado] [nvarchar](12) NULL,
+	[nombre] [nvarchar](50) NULL,
+	[direccion] [nvarchar](50) NULL,
+	[telefono] [nvarchar](10) NULL
+)
+
+
+
+/* Agregar COLUMNA. OK */
+ALTER TABLE Tbl_Curso
+ADD Duracion int NOT NULL;
+
+/*Eliminar Columna. OK */
+ALTER TABLE Tbl_Curso
+DROP COLUMN Duracion;
+
+/* Modificar Columna. OK  */
+alter table Tbl_Curso
+alter column NomCurso varchar(20) not  null;
+
+/*Ejemplos de Constraints (Restricciones) */ 
+
+/*FK OK*/
+alter table Persona
+add Idp int not null FOREIGN KEY REFERENCES Tbl_Profesor(Idp);
+
+/*Check OK*/
+alter table Persona
+add edad int not null CHECK (edad >= 18);
+
+drop table Persona;
+
+CREATE INDEX idx_nomCurso
+ON Tbl_Curso (NomCurso);
+
+
+
+
+
+
